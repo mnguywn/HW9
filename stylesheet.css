@@ -1,0 +1,19 @@
+.flex-container{
+    display: flex;
+    background-color:white;
+    align-items: center, stretch;
+    flex-direction: row;
+
+}
+.flex-container div{
+    background-color:#bddbc7;
+    width: 90%;
+    padding: 10px 30px;
+}
+body{
+    background-image: url(clouds.jpeg);
+    background-position-x: center;
+    font-family:'Courier New', Courier, monospace;
+    text-align: center;
+    font-size: 21px;
+}
