@@ -2,76 +2,141 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Setlist 2021</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <title>Michelle's Set List</title>
+        <link rel="stylesheet" href="stylesheet.css">
+        <script language="javascript">
+            List = [
+               {
+                   "title": "Woman",
+                   "artist": "Harry Styles",
+                   "genre": ["Pop"],
+                   "year": "2017"
+                },
+                {
+                   "title": "Kazino",
+                   "artist": "BIBI",
+                   "genre": ["KPop"],
+                   "year": "2019"
+               },
+               {
+                   "title": "Chanel",
+                   "artist": "Frank Ocean",
+                   "genre": "RnB",
+                   "year": "2017"
+               },
+               {
+                   "title": "Martini Blue",
+                   "artist": "DPR Live",
+                   "genre": "Hip Hop",
+                   "year": "2017"
+               },
+               {
+                   "title": "Happier Than Ever",
+                   "artist": "Billie Eilish",
+                   "genre": "Alternative",
+                   "year": "2021"
+               },
+               {
+                   "title": "Bambi",
+                   "artist": "Baekhyn",
+                   "genre": "KPop",
+                   "year": "2021"
+               },
+               {
+                   "title": "Telepatia",
+                   "artist": "Kali Uchis",
+                   "genre": "RnB",
+                   "year": "2020"
+               },
+               {
+                   "title": "Like a Fool",
+                   "artist": "Nive, Sam Kim",
+                   "genre": "Pop",
+                   "year": "2020"
+               },
+               {
+                   "title": "t r a n s p a r e n t s o u l",
+                   "artist": "WILLOW, Travis Barker",
+                   "genre": "Pop",
+                   "year": "2021"
+               },
+               {
+                   "title": "HIP",
+                   "artist": "Mamamoo",
+                   "genre": "KPop",
+                   "year": "2019"
+               }
+            ]
+        </script>
     </head>
     <body>
-        <form onsubmit="return false"> Sort by Genre:
-            <select id="sortChoices">
-                <option id="Default">All Genres</option>
-                <option id="Rap">Rap</option>
-                <option id="Pop">Pop</option>
-                <option id="KPop">KPop</option>
-                <option id="Rock">Rock</option>
-                <option id="Hip Hop">Hip Hop</option>
-                <option id="RnB">RnB</option>
-                <option id="Alternative">Alternative</option>
-                <option id="Indie">Indie</option>
+        <form id= "ListForm">
+            <label><strong>Sort by genre:</strong></label>
+            <select id = "choices">
+                <option>All genres</option>
+                <option>RnB</option>
+                <option>Hip Hop</option>
+                <option>KPop</option>
+                <option>Pop</option>
+                <option>Alternative</option>
             </select>
-            <button type="submit" id="sort" value="Filter">Filter by Genre</button>
+            <button type="button" onclick="filter()">Filter</button>
         </form>
+        <p id = "showChoice"></p>
 
-        <div id="playlist"></div>
+        <table id="ListTable" style="text-align:left;"></table>
+        <div class="row">
+            <div class="column">
+                <script language="javascript">
+                    var strList = JSON.stringify(List);
+                    document.write(strList + "<hr>");
+                    var arrList = JSON.parse(strList);
+                </script>
+            </div>
+            <div class="column">
+                <script language= "javascript">
+                var strList = JSON.stringify(List);
+                var arrList = JSON.parse(strList);
+                var displayList = '';
+
+                for (var i = 0; i < arrList.length; i++){
+                    displayList += arrList[i].title + "<br>"
+                    + arrList[i].artist + "<br>" 
+                    + arrList[i].genre + "<br>"
+                    + arrList[i].year + "<br>"
+                    + "<hr>"
+                }
+                document.getElementById('ListTable').innerHTML = displayList;
+                </script>
+        </div>
+        </div>
+
         <script language="javascript">
+            function filter(){
+                var genre = document.getElementById("choices");
+                var result = genre.options[genre.selectedIndex].text;
 
-            $(document).ready(sort(0));
-            var allGnres=["All Genres","Rap","Pop","KPop","Rock","Hip Hop","Rock","RnB","Alternative","Indie"];
-
-            function specificGenre(findGenre, arr){
-                if(findGenre == "All Genres"){
-                    return true;
+                if (result == "RnB"){
+                    document.getElementById("showChoice").innerHTML =
+                    "Chanel" + "<br>" + "Telepatia";
                 }
-                for(var j = 0; j <arr.length; j++){
-                    if(findGenres == arr[j]){
-                        return true;
-                    }
+                if (result == "Hip Hop"){
+                    document.getElementById("showChoice").innerHTML =
+                    "Martini Blue";
                 }
-                return false;
+                if (result == "KPop"){
+                    document.getElementById("showChoice").innerHTML =
+                    "Kazino" + "<br>" + "Bambi" + "<br>" + "HIP";
+                }
+                if (result == "Pop"){
+                    document.getElementById("showChoice").innerHTML =
+                    "Woman" + "<br>" + "Like a Fool" + "<br>" + "t r a n s p a r e n t s o u l";
+                }
+                if (result == "Alternative"){
+                    document.getElementById("showChoice").innerHTML =
+                    "Happier Than Ever";
+                }
             }
-            function sort(genreSort){
-                $.getJSON('setlist.json', function(info){
-                    infoString=JSON.stringify(info);
-                    infoArray=JSON.parse(infoString);
-                    infoData="";
-
-                    for (var i = 0; i<10; i++) {
-                        if(specificGenre(allGenres[genreSort], infoArray[i].genre)){
-                            infoData += "<div class='info'>" + infoArray[i].title + "</div>";
-                            indoData += "div class='info'>" + "Artists: " + infoArray[i].artists + "<br/>";
-                            infoData += "Genre: ";
-
-                            for(var k = 0; k <infoArray[i].genre.length; k++){
-                                infoData += infoArray[i].genre[k];
-                            }
-                            infoData += "<br/>";
-                            infoData += "Year: " + infoArray[i].yearReleased + "</div>";
-                            infoData += "<hr>";
-                        }
-                    }
-                document.getElementById("playlist").innerHTML = infoData;
-                }
-                )
-            }
-        </script>
-        <script language="javascript">
-            $('#sort').on('click', function() {
-                if($("#sortChoices").prop('selectedIndex') == 0){
-                    sort(0);
-                }
-                else{
-                    sort($("#sortChoices").prop('selectedIndex'));
-                }
-            });
         </script>
     </body>
 </html>
