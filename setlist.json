@@ -1,0 +1,62 @@
+[
+    {
+        "title": "Woman",
+        "artists": "Harry Styles",
+        "genre": ["Rock","Pop"],
+        "yearReleased": "2017"
+    },
+    {
+        "title": "Kazino",
+        "artists": "BIBI",
+        "genre": ["Hip Hop","KPop"],
+        "yearReleased": "2020"
+    },
+    {
+        "title": "Chanel",
+        "artists": "Frank Ocean",
+        "genre": ["RnB","Pop"],
+        "yearReleased": "2017"
+    },
+    {
+        "title": "Martini Blue",
+        "artists": "NPR Live",
+        "genre": ["Hip Hop","Rap"],
+        "yearReleased": "2017"
+    },
+    {
+        "title": "Happier Than Ever",
+        "artists": "Billie Eilish",
+        "genre": ["Alternative","Indie"],
+        "yearReleased": "2021"
+    },
+    {
+        "title": "Bambi",
+        "artists": "Baekhyun",
+        "genre": ["Pop"],
+        "yearReleased": "2021"
+    },
+    {
+        "title": "Telepatia",
+        "artists": "Kali Uchis",
+        "genre": ["Pop"],
+        "yearReleased": "2020"
+    },
+    {
+        "title": "Like a Fool",
+        "artists": "Nive, Sam Kim",
+        "genre": ["KPop"],
+        "yearReleased": "2020"
+    },
+    {
+        "title": "t r a n s p a r e n t s o u l",
+        "artists": "WILLOW, Travis Barker",
+        "genre": ["Pop"],
+        "yearReleased": "2021"
+    },
+    {
+        "title": "HIP",
+        "artists": "Mamamoo",
+        "genre": ["KPop"],
+        "yearReleased": "2019"
+    }
+]
